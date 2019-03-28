@@ -1,0 +1,14 @@
+.terraform
+*.tfvars
+.DS_Store
+*.tfstate
+*.tfstate.*
+*.pem
+*.pub
+*.sh
+*.tpl
+*.crt
+*.cmd
+*.ps1
+kube.yml
+*.swp
