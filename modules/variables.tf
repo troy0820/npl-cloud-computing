@@ -1,20 +1,5 @@
-variable "region" {
-  description = "AWS Region"
-  type        = "string"
-}
-
-variable "profile" {
-  description = "AWS profile"
-  type        = "string"
-}
-
 variable "is_ready" {
   description = "Trigger for null resource"
-  type        = "string"
-}
-
-variable "key_name" {
-  description = "ssh key_name pair for instance connection"
   type        = "string"
 }
 
