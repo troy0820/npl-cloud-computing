@@ -19,6 +19,7 @@ data "template-file" init {
 }
 
 resource "aws_key_pair" {
+  depends_on = ["null_resource.is_ready"]
   key_name   = "instance-public-key"
   public_key = "${file("${var.public_key}")}"
 }
@@ -43,6 +44,7 @@ resource "aws_subnet" "instance-subnet" {
 }
 
 resource "aws_security_group" "allow_all" {
+  depends_on  = ["${aws_vpc.instance-vpc}"]
   name        = "allow_all"
   description = "Allow All inbound traffic"
   vpc_id      = "${aws_vpc.instance-vpc.id}"
