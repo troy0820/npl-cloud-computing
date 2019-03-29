@@ -18,11 +18,6 @@ variable "ami" {
   type        = "string"
 }
 
-variable "public_key" {
-  description = "Public key for ssh instance"
-  type        = "string"
-}
-
 variable "name" {
   description = "Tags for each instance"
   type        = "string"
@@ -35,5 +30,10 @@ variable "cidr_block" {
 
 variable "instance_type" {
   description = "AWS instance_type type e.g t2.micro"
+  type        = "string"
+}
+
+variable "key_name" {
+  description = "Key/Pair name for EC2 instances"
   type        = "string"
 }

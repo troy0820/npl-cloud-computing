@@ -69,7 +69,7 @@ resource "aws_instance" "npl-instance" {
   count                       = "${var.count}"
   ami                         = "${var.ami}"
   instance_type               = "${var.instance_type}"
-  key_name                    = "instance-key"
+  key_name                    = "${var.key_name}"
   subnet_id                   = "${aws_subnet.instance-subnet.id}"
   vpc_security_group_ids      = ["${aws_security_group.allow_all.id}"]
   associate_public_ip_address = true

@@ -29,7 +29,7 @@ variable "cidr_block" {
   type        = "string"
 }
 
-variable "public_key" {
-  description = "Public key for key/pair for instance"
+variable "key_name" {
+  description = "Key/Pair for EC2 instances"
   type        = "string"
 }

@@ -15,8 +15,8 @@ module "norfolk-library" {
 
   name          = "${var.name}"
   cidr_block    = "${var.cidr_block}"
-  public_key    = "${var.public_key}"
   count         = "${var.count}"
   ami           = "${var.ami}"
+  key_name      = "${var.key_name}"
   instance_type = "${var.instance_type}"
 }
