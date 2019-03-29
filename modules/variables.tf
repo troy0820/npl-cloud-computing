@@ -43,3 +43,8 @@ variable "cidr_block" {
   description = "CIDR block for subnet"
   type        = "string"
 }
+
+variable "public_key" {
+  description = "Public key for key/pair for instance"
+  type        = "string"
+}
