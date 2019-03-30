@@ -12,3 +12,4 @@
 *.ps1
 kube.yml
 *.swp
+variables.json

@@ -1,0 +1,29 @@
+{
+  "variables": {
+	"vpc_id": "",
+	"subnet_id":""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "ssh_pty": "true",
+      "profile": "aws-lab",
+      "vpc_id": "{{user `vpc_id`}}",
+      "region": "us-east-1",
+      "source_ami": "ami-06d990a360d7a793c",
+      "subnet_id":"{{user `subnet_id`}}",
+      "associate_public_ip_address": "true",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "npl-nginx-{{ timestamp }}"
+    }
+  ],
+
+"provisioners": [
+    {
+      "type": "shell",
+      "script": "script.sh",
+      "execute_command": "{{ .Vars }} sudo -E -S bash '{{ .Path }}'"
+    }
+  ]
+}
