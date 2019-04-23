@@ -1,5 +1,6 @@
 terraform {
   required_version = ">0.11.0"
+  backend          s3               {}
 }
 
 provider "aws" {
@@ -18,5 +19,6 @@ module "norfolk-library" {
   count         = "${var.count}"
   ami           = "${var.ami}"
   key_name      = "${var.key_name}"
+  public_key    = "${var.public_key}"
   instance_type = "${var.instance_type}"
 }

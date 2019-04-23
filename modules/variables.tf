@@ -33,3 +33,8 @@ variable "key_name" {
   description = "Key/Pair for EC2 instances"
   type        = "string"
 }
+
+variable "public_key" {
+  description = "Public key for EC2 instances"
+  type        = "string"
+}

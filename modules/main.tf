@@ -8,6 +8,11 @@ data "template_file" init {
   template = "${file("${path.module}/scripts/user-data.tpl")}"
 }
 
+resource "aws_key_pair" "ec2-key-pair" {
+  key_name   = "${var.key_name}"
+  public_key = "${var.public_key}"
+}
+
 resource "aws_vpc" "instance-vpc" {
   depends_on = ["null_resource.is_ready"]
   cidr_block = "${var.cidr_block}"
@@ -69,7 +74,7 @@ resource "aws_instance" "npl-instance" {
   count                       = "${var.count}"
   ami                         = "${var.ami}"
   instance_type               = "${var.instance_type}"
-  key_name                    = "${var.key_name}"
+  key_name                    = "${aws_key_pair.ec2-key-pair.key_name}"
   subnet_id                   = "${aws_subnet.instance-subnet.id}"
   vpc_security_group_ids      = ["${aws_security_group.allow_all.id}"]
   associate_public_ip_address = true
@@ -80,5 +85,5 @@ resource "aws_instance" "npl-instance" {
 }
 
 resource "null_resource" "is_complete" {
-  depends_on = ["null_resource.is_ready", "aws_vpc.instance-vpc", "aws_subnet.instance-subnet", "aws_instance.npl-instance"]
+  depends_on = ["null_resource.is_ready", "aws_key_pair.ec2-key-pair", "aws_vpc.instance-vpc", "aws_subnet.instance-subnet", "aws_instance.npl-instance"]
 }
